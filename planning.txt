@@ -1,0 +1,2 @@
+1) Create the layout in HTMl for the header
+2) Create the layout in HTML for the footer

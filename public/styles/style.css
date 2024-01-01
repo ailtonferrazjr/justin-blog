@@ -1,0 +1,78 @@
+:root {
+    --primary-color: #0F2167; /* Dark blue */
+    --secondary-color: #FFECD6; /* Light cream */
+    --link-color: #0F2167; /* Dark blue */
+    --link-hover-color: #FFECD6; /* Light cream */
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0px;
+}
+
+.header-nav {
+
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+    padding: 0px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0px;
+    gap: 30px;
+    margin: 0px;
+    margin-right: 30px;
+    font-size: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    color: var(--link-color);
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    text-decoration: underline;
+
+}
+
+.blog-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0px;
+    margin-left: 30px;
+}
+
+@media (max-width: 600px) {
+
+    html {
+        font-size: 10px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        font-size: 1.5rem;
+        margin-right: 20px;
+    }
+
+    .blog-title {
+        margin-left: 20px;
+    }
+
+    .nav-links li:first-child {
+        display: none;
+    }
+}
