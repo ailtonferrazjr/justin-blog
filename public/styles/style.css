@@ -1,8 +1,16 @@
 :root {
-    --primary-color: #0F2167; /* Dark blue */
-    --secondary-color: #FFECD6; /* Light cream */
-    --link-color: #0F2167; /* Dark blue */
-    --link-hover-color: #FFECD6; /* Light cream */
+    --primary-color: #0F2167;
+    /* Dark blue */
+    --secondary-color: #FFECD6;
+    /* Light cream */
+    --link-color: #0F2167;
+    /* Dark blue */
+    --link-hover-color: #FFECD6;
+    /* Light cream */
+    --third-color: #4CB9E7;
+    /* Light blue */
+    --fourth-color: #3559E0;
+    /* Medium blue */
 }
 
 html {
@@ -10,8 +18,32 @@ html {
 }
 
 body {
-    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
+
+.content {
+    display: grid;
+    padding-top: 70px;
+    grid-template-columns: 25% 75%;
+    flex: 1;
+}
+
+/* SIDE BAR CSS */
+
+.side-menu {
+    background-color: var(--fourth-color);
+}
+
+/* TIMELINE CSS */
+
+.timeline {
+    background-color: var(--secondary-color);
+}
+
+/* HEADER CSS */
 
 .header-nav {
 
@@ -23,7 +55,12 @@ body {
     align-items: center;
     min-height: 70px;
     padding: 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
+
 
 .nav-links {
     display: flex;
@@ -56,15 +93,23 @@ body {
     margin-left: 30px;
 }
 
+/* FOOTER CSS */
+
 .footer-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding: 10px 30px 10px 0px;
+    align-items: flex-end; /* Center align for testing */
+    justify-content: right; /* Center justify for testing */
+    padding: 10px;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    max-height: 50px;
+}
+
+.footer-divider {
+    height: 1px; /* Reduced height for testing */
+    background-color: var(--secondary-color); /* Bright color for visibility */
+    width: 100%;
+    margin: 10px 0;
 }
 
 .footer-icons {
@@ -72,13 +117,21 @@ body {
     gap: 10px;
 }
 
-.footer-icons a * {
-
+.footer-icons svg {
+    width: 24px;
+    /* Adjust size as needed */
+    height: 24px;
+    fill: var(--secondary-color);
+    /* Icon color */
 }
 
+.footer-icons a:hover svg {
+    opacity: 0.8;
+}
 
 .footer-content p {
     font-size: 1.2rem;
+    margin: 0px;
 }
 
 @media (max-width: 600px) {
