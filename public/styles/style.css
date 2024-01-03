@@ -1,16 +1,12 @@
 :root {
-    --primary-color: #0F2167;
-    /* Dark blue */
-    --secondary-color: #FFECD6;
-    /* Light cream */
-    --link-color: #0F2167;
-    /* Dark blue */
-    --link-hover-color: #FFECD6;
-    /* Light cream */
-    --third-color: #4CB9E7;
-    /* Light blue */
-    --fourth-color: #3559E0;
-    /* Medium blue */
+    --primary-color: #0F2167; /* Dark Blue */
+    --secondary-color: #F5F5F5; /* Light Grey */
+    --accent-color: #007BFF; /* Cerulean Blue */
+    --text-color: #333333; /* Almost Black */
+    --button-text-color: #FFFFFF; /* White */
+    --highlight-color: #FF6B6B; /* Coral */
+    --button-background-color: #0056b3; /* Darker shade of blue for buttons */
+    --side-menu-color: #E8E8E8; /* Slightly darker grey */
 }
 
 html {
@@ -22,33 +18,96 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    padding-top: 70px; /* Height of the fixed header */
+}
+
+a, .button {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+a:hover, .button:hover, .highlight {
+    background-color: var(--highlight-color);
 }
 
 .content {
-    display: grid;
-    padding-top: 70px;
-    grid-template-columns: 25% 75%;
     flex: 1;
+    display: flex;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 /* SIDE BAR CSS */
-
 .side-menu {
-    background-color: var(--fourth-color);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 25%;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    background-color: var(--side-menu-color);
+    color: var(--text-color);
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    padding-bottom: 70px; /* Space for footer */
 }
 
-/* TIMELINE CSS */
+.side-menu .search-box {
+    text-align: center;
+    margin: 2px 10px;
+}
 
+.side-menu .search-box input[type="text"] {
+    width: 80%; /* Adjust width as needed */
+    padding: 5px;
+    margin: 0 auto;
+    display: block;
+}
+
+
+.side-menu .search-box button {
+    width: 50px; /* Adjust width as needed */
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.side-menu .side-menu-title {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.side-menu .side-menu-posts ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu .side-menu-posts ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    padding: 5px 0;
+}
+
+.side-menu .side-menu-posts ul li a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* TIMELINE CSS */
 .timeline {
-    background-color: var(--secondary-color);
+    flex-grow: 1;
+    margin-left: 25%;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 /* HEADER CSS */
-
 .header-nav {
-
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--button-text-color);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -59,8 +118,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 100;
 }
-
 
 .nav-links {
     display: flex;
@@ -73,17 +132,14 @@ body {
 }
 
 .nav-links a {
-    text-decoration: none;
-    background-color: var(--secondary-color);
-    border-radius: 5px;
-    padding: 5px 10px 5px 10px;
-    color: var(--link-color);
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-    text-decoration: underline;
-
+    background-color: var(--accent-color);
+    color: var(--button-text-color);
 }
 
 .blog-title {
@@ -94,20 +150,24 @@ body {
 }
 
 /* FOOTER CSS */
-
 .footer-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Center align for testing */
-    justify-content: right; /* Center justify for testing */
+    align-items: center;
+    justify-content: center;
     padding: 10px;
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--button-text-color);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 50;
 }
 
 .footer-divider {
-    height: 1px; /* Reduced height for testing */
-    background-color: var(--secondary-color); /* Bright color for visibility */
+    height: 1px;
+    background-color: var(--secondary-color);
     width: 100%;
     margin: 10px 0;
 }
@@ -117,12 +177,15 @@ body {
     gap: 10px;
 }
 
+.footer-icons a {
+    display: inline-block;
+    background-color: transparent;
+}
+
 .footer-icons svg {
+    fill: var(--button-text-color);
     width: 24px;
-    /* Adjust size as needed */
     height: 24px;
-    fill: var(--secondary-color);
-    /* Icon color */
 }
 
 .footer-icons a:hover svg {
@@ -135,7 +198,6 @@ body {
 }
 
 @media (max-width: 600px) {
-
     html {
         font-size: 10px;
     }
@@ -152,5 +214,16 @@ body {
 
     .nav-links li:first-child {
         display: none;
+    }
+
+    .side-menu {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding-bottom: 0;
+    }
+
+    .timeline {
+        margin-left: 0;
     }
 }
